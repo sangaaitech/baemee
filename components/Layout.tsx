@@ -1,41 +1,38 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import React, {ReactNode} from 'react';
+import Head from 'next/head';
+
+import Footer from './Footer';
+import MainNavbar from '@components/Navigation/MainNavbar';
+import TestNav from '@components/TestComponents/TestNav';
 
 type Props = {
-  children?: ReactNode
-  title?: string
-}
+  children?: ReactNode;
+  title?: string;
+};
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
+const Layout = ({children, title = 'Hooksby'}: Props) => (
+  // <div className="relative overflow-hidden">
+  <>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        key="scale"
+      />
+      {/* <!-- this sets the color of url bar in Apple smatphones --> */}
+      {/* <meta name="apple-mobile-web-app-status-bar" content="#0f172a" /> */}
+      <meta name="apple-mobile-web-app-status-bar" content="#0f0f0f" />
     </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-)
+    {/* <Navbar /> */}
+    <MainNavbar />
+    {/* <TestNav /> */}
+    <main>{children}</main>
+    <Footer />
+    {/* </div> */}
+  </>
+);
 
-export default Layout
+export default Layout;
